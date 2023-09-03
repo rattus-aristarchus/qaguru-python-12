@@ -2,6 +2,9 @@ from src.pages.registration_page import RegistrationPage
 from src.data import users
 
 
+#TODO относительные пути
+
+
 def test_practice_form(setup_browser):
     page = RegistrationPage()
     page.open()
