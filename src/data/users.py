@@ -35,6 +35,9 @@ class User:
     def hobbies_str(self):
         return ", ".join(self.hobbies)
 
+    def __str__(self):
+        return self.name + " " + self.last_name
+
 
 test_user = User(
     name="test_name",

@@ -1,9 +1,10 @@
 from selene import browser, have, command
-from selenium import webdriver
+import allure
 
 
 class RegistrationPage:
 
+    @allure.step("Открываем страницу")
     def open(self):
         browser.open("https://demoqa.com/automation-practice-form")
         browser.all("[id^=google_ads][id$=container__]").with_(timeout=10).wait_until(
@@ -11,6 +12,7 @@ class RegistrationPage:
         )
         browser.all('[id^=google_ads][id$=container__]').perform(command.js.remove)
 
+    @allure.step("Регистрируем пользователя")
     def register(self, user):
         self._set_name(user.name)
         self._set_last_name(user.last_name)
@@ -35,6 +37,7 @@ class RegistrationPage:
 
         self._submit()
 
+    @allure.step("Убеждаемся, что пользователь существует")
     def should_have_user(self, user):
         self._should_have_user_fields(user.name,
                                       user.last_name,
